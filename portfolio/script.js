@@ -25,68 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTheme(savedTheme === 'dark');
     themeButton?.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
 
-    // Keep the decorative canvas lightweight and pause it off-screen.
-    const canvas = document.getElementById('particle-canvas');
-    const context = canvas?.getContext('2d');
-    const hero = document.getElementById('home');
-    if (canvas && context && hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        let width = 0;
-        let height = 0;
-        let points = [];
-        let frame = 0;
-        let inView = true;
-        let lastTimestamp = 0;
-        const draw = (timestamp) => {
-            if (!inView || document.hidden) { frame = 0; lastTimestamp = timestamp; return; }
-            const delta = lastTimestamp ? Math.min((timestamp - lastTimestamp) / 16.67, 1.75) : 1;
-            lastTimestamp = timestamp;
-            context.clearRect(0, 0, width, height);
-            points.forEach(point => {
-                point.x += point.vx * delta;
-                point.y += point.vy * delta;
-                if (point.x < 0 || point.x > width) point.vx *= -1;
-                if (point.y < 0 || point.y > height) point.vy *= -1;
-            });
-            for (let i = 0; i < points.length; i += 1) {
-                for (let j = i + 1; j < points.length; j += 1) {
-                    const dx = points[i].x - points[j].x;
-                    const dy = points[i].y - points[j].y;
-                    const distance = Math.hypot(dx, dy);
-                    if (distance < 130) {
-                        const alpha = (1 - distance / 130) * .18;
-                        context.strokeStyle = `rgba(140, 185, 204, ${alpha})`;
-                        context.beginPath(); context.moveTo(points[i].x, points[i].y); context.lineTo(points[j].x, points[j].y); context.stroke();
-                    }
-                }
-            }
-            points.forEach(point => {
-                context.fillStyle = 'rgba(140, 185, 204, .62)';
-                context.beginPath(); context.arc(point.x, point.y, point.size, 0, Math.PI * 2); context.fill();
-            });
-            frame = requestAnimationFrame(draw);
-        };
-        const resize = () => {
-            const rect = hero.getBoundingClientRect();
-            const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
-            width = rect.width; height = rect.height;
-            canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
-            context.setTransform(ratio, 0, 0, ratio, 0, 0);
-            points = Array.from({ length: width < 700 ? 16 : 30 }, () => ({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - .5) * .42, vy: (Math.random() - .5) * .42, size: Math.random() * 1.3 + .7 }));
-            if (inView && !document.hidden && !frame) frame = requestAnimationFrame(draw);
-        };
-        window.addEventListener('resize', resize, { passive: true });
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && frame) { cancelAnimationFrame(frame); frame = 0; }
-            else if (inView && !frame) frame = requestAnimationFrame(draw);
-        });
-        if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => {
-            inView = entry.isIntersecting;
-            if (inView && !document.hidden && !frame) frame = requestAnimationFrame(draw);
-            else if (!inView && frame) { cancelAnimationFrame(frame); frame = 0; }
-        }).observe(hero);
-        resize();
-    }
-
     // Show a simple initials fallback if the portrait fails to load.
     const portrait = document.getElementById('portraitImg');
     const portraitFallback = document.getElementById('portraitFallback');
@@ -194,33 +132,52 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('is-hidden', !visible);
             if (visible) visibleCount += 1;
         });
+        const projectEmpty = document.getElementById('projectEmpty');
+        if (projectEmpty) projectEmpty.hidden = visibleCount > 0;
         if (filterStatus) filterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'} shown`;
     }));
 
     // This form opens a prefilled email draft; it does not send or store data.
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
+    const formFields = [
+        { input: document.getElementById('contactName'), error: document.getElementById('nameError'), emptyMessage: 'Enter your name.' },
+        { input: document.getElementById('contactEmail'), error: document.getElementById('emailError'), emptyMessage: 'Enter your email address.' },
+        { input: document.getElementById('contactMessage'), error: document.getElementById('messageError'), emptyMessage: 'Add a few details about your project.' }
+    ];
+    const clearFieldError = ({ input, error }) => {
+        input?.removeAttribute('aria-invalid');
+        if (error) { error.hidden = true; error.textContent = ''; }
+    };
+    formFields.forEach(field => field.input?.addEventListener('input', () => {
+        const value = field.input.value.trim();
+        if (value && field.input.validity.valid) clearFieldError(field);
+        if (formStatus) { formStatus.textContent = ''; delete formStatus.dataset.state; }
+    }));
     contactForm?.addEventListener('submit', event => {
         event.preventDefault();
-        if (!contactForm.checkValidity()) {
-            contactForm.reportValidity();
+        const invalidField = formFields.find(({ input }) => !input?.value.trim() || !input.validity.valid);
+        if (invalidField) {
+            const { input, error, emptyMessage } = invalidField;
+            input.setAttribute('aria-invalid', 'true');
+            if (error) {
+                error.textContent = input.value.trim() ? 'Enter a valid email address.' : emptyMessage;
+                error.hidden = false;
+            }
+            input.focus();
+            if (formStatus) {
+                formStatus.dataset.state = 'error';
+                formStatus.textContent = 'Check the highlighted field and try again.';
+            }
             return;
         }
-        const nameField = document.getElementById('contactName');
-        const emailField = document.getElementById('contactEmail');
-        const messageField = document.getElementById('contactMessage');
-        const name = nameField.value.trim();
-        const email = emailField.value.trim();
-        const message = messageField.value.trim();
-        const emptyField = !name ? nameField : !email ? emailField : !message ? messageField : null;
-        if (emptyField) {
-            formStatus.textContent = 'Please complete each field before opening your draft.';
-            emptyField.focus();
-            return;
-        }
+        const name = formFields[0].input.value.trim();
+        const email = formFields[1].input.value.trim();
+        const message = formFields[2].input.value.trim();
         const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
         const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-        formStatus.textContent = 'Opening your email app with a draft…';
+        formStatus.dataset.state = 'info';
+        formStatus.textContent = 'Your email app should open with a draft. This page does not send the message.';
         window.location.href = `mailto:prajwalu143@gmail.com?subject=${subject}&body=${body}`;
     });
 

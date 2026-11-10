@@ -28,8 +28,8 @@
                 <span class="brand-mark" aria-hidden="true"></span>PRAJWAL
             </a>
 
-            <ul class="nav-links" id="navLinks" role="list">
-                <li><a class="nav-link active" href="#home">Home</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a class="nav-link active" href="#home" aria-current="location">Home</a></li>
                 <li><a class="nav-link" href="#about">About</a></li>
                 <li><a class="nav-link" href="#skills">Toolkit</a></li>
                 <li><a class="nav-link" href="#process">Process</a></li>
@@ -53,12 +53,11 @@
     <main id="main-content">
 
         <!-- HERO SECTION -->
-        <section class="hero section" id="home">
-            <canvas id="particle-canvas" aria-hidden="true"></canvas>
+        <section class="hero section" id="home" aria-labelledby="heroTitle">
             <div class="container hero-grid">
                 <div class="hero-copy reveal">
-                    <p class="eyebrow"><span></span>Hello, I'm</p>
-                    <h1>Pra<span>jwal</span></h1>
+                    <p class="eyebrow"><span aria-hidden="true"></span>Hello, I'm</p>
+                    <h1 id="heroTitle">Pra<span>jwal</span></h1>
                     <p class="role-line">Student developer <span aria-hidden="true">·</span> Nepal</p>
                     <p class="hero-description">
                         Student developer in Nepal, building practical software for everyday routines —
@@ -75,13 +74,11 @@
                 </div>
 
                 <div class="portrait-wrap reveal">
-                    <div class="portrait-orbit orbit-one"></div>
-                    <div class="portrait-orbit orbit-two"></div>
                     <div class="portrait-frame">
                         <img id="portraitImg" src="assets/profile.jpg" alt="Prajwal on a balcony in Nepal" width="960" height="1280" fetchpriority="high">
                         <span class="portrait-fallback" id="portraitFallback" aria-hidden="true">P</span>
                     </div>
-                    <p class="portrait-status"><i aria-hidden="true"></i>Student developer · Nepal</p>
+                    <p class="portrait-status">Student developer · Nepal</p>
                 </div>
             </div>
 
@@ -156,7 +153,7 @@
                     <button class="workflow-step" type="button" data-title="Build" data-copy="Make a working version with the smallest set of useful features." aria-pressed="false">02 Build</button>
                     <button class="workflow-step" type="button" data-title="Break &amp; debug" data-copy="Trace bugs back to their cause, fix them, and keep the lesson." aria-pressed="false">03 Debug</button>
                     <button class="workflow-step" type="button" data-title="Share" data-copy="Document the project, publish it, and use feedback to decide what to improve." aria-pressed="false">04 Share</button>
-                    <div class="workflow-panel">
+                    <div class="workflow-panel" role="status" aria-live="polite" aria-atomic="true">
                         <h3 id="workflowTitle">Learn</h3>
                         <p id="workflowCopy">Pick a real problem and understand the people and constraints around it.</p>
                     </div>
@@ -168,7 +165,7 @@
         <section class="section" id="projects">
             <div class="container">
                 <div class="projects-head reveal">
-                    <div class="section-header" style="text-align:left;margin-bottom:0;">
+                    <div class="section-header projects-heading">
                         <span class="section-label">04 / WORK · 06 SELECTED BUILDS</span>
                         <h2 class="section-title">Start with these.</h2>
                     </div>
@@ -181,7 +178,7 @@
                     <p id="filterStatus" class="sr-only" aria-live="polite"></p>
                 </div>
 
-                <div class="projects-grid">
+                <div class="projects-grid" id="projectsGrid">
                     <article class="project-card is-featured reveal" data-category="web">
                         <div class="project-visual"><img src="https://images.unsplash.com/photo-1703792686658-24e62d626ed2?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Barber cutting a client's hair in a modern salon" width="800" height="450" loading="lazy" decoding="async"></div>
                         <div class="project-body">
@@ -244,6 +241,7 @@
                         </div>
                     </article>
                 </div>
+                <p class="empty-state" id="projectEmpty" hidden>No projects match this filter yet.</p>
             </div>
         </section>
 
@@ -258,18 +256,27 @@
                 </div>
 
                 <form class="contact-form reveal reveal-delay-1" id="contactForm" novalidate>
-                    <label for="contactName">Name</label>
-                    <input id="contactName" name="name" autocomplete="name" required placeholder="Your name" aria-required="true">
+                    <div class="form-field">
+                        <label for="contactName">Name</label>
+                        <input id="contactName" name="name" autocomplete="name" required placeholder="Your name" aria-describedby="nameError">
+                        <span class="field-error" id="nameError" hidden></span>
+                    </div>
 
-                    <label for="contactEmail">Email</label>
-                    <input id="contactEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com" aria-required="true">
+                    <div class="form-field">
+                        <label for="contactEmail">Email</label>
+                        <input id="contactEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com" aria-describedby="emailError">
+                        <span class="field-error" id="emailError" hidden></span>
+                    </div>
 
-                    <label for="contactMessage">Project details</label>
-                    <textarea id="contactMessage" name="message" rows="5" required placeholder="Tell me about your project…" aria-required="true"></textarea>
+                    <div class="form-field form-field-wide">
+                        <label for="contactMessage">Project details</label>
+                        <textarea id="contactMessage" name="message" rows="5" required placeholder="Tell me about your project…" aria-describedby="messageError"></textarea>
+                        <span class="field-error" id="messageError" hidden></span>
+                    </div>
 
                     <button class="btn btn-primary" type="submit">Open email draft <span>↗</span></button>
                     <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-                    <p class="form-note">This opens your email app with a draft. The page does not send or store your message.</p>
+                    <p class="form-note" id="formNote">This opens your email app with a draft. The page does not send or store your message.</p>
                 </form>
             </div>
         </section>
