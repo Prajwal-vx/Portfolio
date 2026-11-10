@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prajwal is a student developer in Nepal building practical web apps, Python services, and AI tools.">
+    <meta name="theme-color" content="#0B1120">
+    <title>Prajwal — Student Developer in Nepal</title>
+
+    <!-- Google Fonts: Open Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="progress" aria-hidden="true"></div>
+
+    <!-- ========== HEADER / NAV ========== -->
+    <header class="site-header" id="header">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="brand" href="#home" aria-label="Home">
+                <span class="brand-mark" aria-hidden="true"></span>PRAJWAL
+            </a>
+
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#skills">Toolkit</a></li>
+                <li><a class="nav-link" href="#process">Process</a></li>
+                <li><a class="nav-link" href="#projects">Work</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a class="icon-button" href="https://github.com/Prajwal-vx" target="_blank" rel="noopener noreferrer" aria-label="Visit Prajwal on GitHub">GitHub <span aria-hidden="true">↗</span></a>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="true">
+                    <span aria-hidden="true">◐</span><span class="theme-label">Light</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main id="main-content">
+
+        <!-- HERO SECTION -->
+        <section class="hero section" id="home">
+            <canvas id="particle-canvas" aria-hidden="true"></canvas>
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <p class="eyebrow"><span></span>Hello, I'm</p>
+                    <h1>Pra<span>jwal</span></h1>
+                    <p class="role-line">Student developer <span>·</span> Nepal</p>
+                    <p class="hero-description">
+                        Student developer in Nepal, building practical software for everyday routines —
+                        from a salon in Birtamode to multilingual WhatsApp support.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projects">Explore work <span>↗</span></a>
+                        <a class="btn btn-ghost" href="#contact">Let's talk <span>→</span></a>
+                    </div>
+                    <div class="social-row">
+                        <a href="https://github.com/Prajwal-vx" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="mailto:prajwalu143@gmail.com">Email</a>
+                    </div>
+                </div>
+
+                <div class="portrait-wrap reveal">
+                    <div class="portrait-orbit orbit-one"></div>
+                    <div class="portrait-orbit orbit-two"></div>
+                    <div class="portrait-frame">
+                        <img id="portraitImg" src="assets/profile.jpg" alt="Prajwal on a balcony in Nepal" width="960" height="1280" fetchpriority="high">
+                        <span class="portrait-fallback" id="portraitFallback" aria-hidden="true">P</span>
+                    </div>
+                    <p class="portrait-status"><i></i>STUDENT DEVELOPER · NEPAL</p>
+                </div>
+            </div>
+
+            <div class="container hero-metrics reveal">
+                <div><strong>17</strong><small>Public GitHub repos</small></div>
+                <div><strong>06</strong><small>Projects selected</small></div>
+                <div><strong>02</strong><small>Deployed projects</small></div>
+                <div><strong>03</strong><small>Build lanes · Python / Web / AI</small></div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section surface" id="about">
+            <div class="container split">
+                <div class="section-heading reveal">
+                    <p class="section-number">01 / ABOUT</p>
+                    <h2 class="section-title">Useful software, <em>close to home.</em></h2>
+                </div>
+                <div class="about-copy reveal reveal-delay-1">
+                    <p class="large">I turn everyday needs into practical, usable tools.</p>
+                    <p>My projects span local business websites, finance tracking, library workflows, weather, and AI messaging. I learn by building, testing ideas, and improving what breaks.</p>
+                    <div class="about-facts">
+                        <div><b>Based in</b><span>Nepal</span></div>
+                        <div><b>Focus</b><span>Web · Python · AI</span></div>
+                        <div><b>Signature project</b><span>Salon platform for Birtamode</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">02 / TOOLKIT · CURRENT</span>
+                    <h2 class="section-title">Tools in my projects.</h2>
+                </div>
+                <div class="skills-grid">
+                    <article class="skill-card reveal reveal-delay-1">
+                        <span>01</span>
+                        <h3>Interfaces</h3>
+                        <p>Next.js, React, TypeScript, Tailwind CSS, HTML, CSS, and JavaScript.</p>
+                    </article>
+                    <article class="skill-card reveal reveal-delay-2">
+                        <span>02</span>
+                        <h3>APIs &amp; backend</h3>
+                        <p>Python, FastAPI, SQLAlchemy, REST endpoints, and server-side workflows.</p>
+                    </article>
+                    <article class="skill-card reveal reveal-delay-3">
+                        <span>03</span>
+                        <h3>Data &amp; jobs</h3>
+                        <p>SQLite, PostgreSQL, Redis, SQL migrations, and asynchronous workers.</p>
+                    </article>
+                    <article class="skill-card reveal reveal-delay-4">
+                        <span>04</span>
+                        <h3>AI &amp; delivery</h3>
+                        <p>WhatsApp Cloud API, OpenAI/Ollama integrations, Docker, and automated checks.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS SECTION -->
+        <section class="section surface" id="process">
+            <div class="container split workflow-layout">
+                <div class="section-heading reveal">
+                    <p class="section-number">03 / PROCESS</p>
+                    <h2 class="section-title">Learn. Build. Break. <em>Fix.</em></h2>
+                </div>
+                <div class="workflow reveal">
+                    <button class="workflow-step active" type="button" data-title="Learn" data-copy="Pick a real problem and understand the people and constraints around it." aria-pressed="true">01 Learn</button>
+                    <button class="workflow-step" type="button" data-title="Build" data-copy="Make a working version with the smallest set of useful features." aria-pressed="false">02 Build</button>
+                    <button class="workflow-step" type="button" data-title="Break &amp; debug" data-copy="Trace bugs back to their cause, fix them, and keep the lesson." aria-pressed="false">03 Debug</button>
+                    <button class="workflow-step" type="button" data-title="Share" data-copy="Document the project, publish it, and use feedback to decide what to improve." aria-pressed="false">04 Share</button>
+                    <div class="workflow-panel">
+                        <h3 id="workflowTitle">Learn</h3>
+                        <p id="workflowCopy">Pick a real problem and understand the people and constraints around it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="projects-head reveal">
+                    <div class="section-header" style="text-align:left;margin-bottom:0;">
+                        <span class="section-label">04 / WORK · 06 SELECTED BUILDS</span>
+                        <h2 class="section-title">Start with these.</h2>
+                    </div>
+                    <div class="filters" role="group" aria-label="Filter projects by type">
+                        <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
+                        <button class="filter" type="button" data-filter="python" aria-pressed="false">Python</button>
+                        <button class="filter" type="button" data-filter="web" aria-pressed="false">Web</button>
+                        <button class="filter" type="button" data-filter="ai" aria-pressed="false">AI</button>
+                    </div>
+                    <p id="filterStatus" class="sr-only" aria-live="polite"></p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card is-featured reveal" data-category="web">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1703792686658-24e62d626ed2?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Barber cutting a client's hair in a modern salon" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>LIVE · LOCAL BUSINESS · NEXT.JS</p>
+                            <h3>Uptown Hair Salon</h3>
+                            <span>Appointment and salon management website built for a real salon in Birtamode, Nepal.</span>
+                            <a href="https://github.com/Prajwal-vx/HairCut" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                            <a href="https://hair-cut-pi.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card is-featured reveal reveal-delay-1" data-category="python">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Financial planning notes and calculator on a desk" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>LIVE · PERSONAL FINANCE · FASTAPI</p>
+                            <h3>FinSight</h3>
+                            <span>Accounts, transfers, expense categories, and live balances backed by authenticated user data.</span>
+                            <a href="https://github.com/Prajwal-vx/financial_dasboard" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                            <a href="https://financial-dasboard-2r62.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card is-featured reveal reveal-delay-2" data-category="ai">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Person using a laptop to communicate online" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>AI SERVICE · WHATSAPP CLOUD API</p>
+                            <h3>WhatsApp AI Assistant</h3>
+                            <span>A multilingual reply service with queued conversations, a worker, and configurable AI providers.</span>
+                            <a href="https://github.com/Prajwal-vx/chatbot" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="python">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Bookshelves in a quiet library" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>LIBRARY WORKFLOWS · FASTAPI</p>
+                            <h3>Library Management System</h3>
+                            <span>Catalogue, copy-level availability, loans, reservations, and member accounts with role-based access.</span>
+                            <a href="https://github.com/Prajwal-vx/library-management-system" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal reveal-delay-1" data-category="web">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Mountain landscape beneath a changing sky" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>WEATHER · VANILLA JAVASCRIPT</p>
+                            <h3>Skyline Weather</h3>
+                            <span>City search, browser location, temperature conversion, saved places, and a five-day outlook.</span>
+                            <a href="https://github.com/Prajwal-vx/weather" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal reveal-delay-2" data-category="web">
+                        <div class="project-visual"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&amp;fit=crop&amp;w=800&amp;q=76" alt="Gym floor with strength-training equipment" width="800" height="450" loading="lazy" decoding="async"></div>
+                        <div class="project-body">
+                            <p>FITNESS · STATIC WEB</p>
+                            <h3>Ironforge Gym</h3>
+                            <span>A gym website with membership and trial forms, browser-based admin tools, and a security-focused static setup.</span>
+                            <a href="https://github.com/Prajwal-vx/gym" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="section surface" id="contact">
+            <div class="container contact-layout">
+                <div class="section-heading reveal">
+                    <p class="section-number">05 / CONTACT</p>
+                    <h2 class="section-title">Let's work <em>together.</em></h2>
+                    <p>Have a project idea or want to collaborate? Send me a note and your email app will open a ready-to-edit draft.</p>
+                    <a class="email-link" href="mailto:prajwalu143@gmail.com">prajwalu143@gmail.com ↗</a>
+                </div>
+
+                <form class="contact-form reveal reveal-delay-1" id="contactForm" novalidate>
+                    <label for="contactName">Name</label>
+                    <input id="contactName" name="name" autocomplete="name" required placeholder="Your name" aria-required="true">
+
+                    <label for="contactEmail">Email</label>
+                    <input id="contactEmail" name="email" type="email" autocomplete="email" required placeholder="you@example.com" aria-required="true">
+
+                    <label for="contactMessage">Project details</label>
+                    <textarea id="contactMessage" name="message" rows="5" required placeholder="Tell me about your project…" aria-required="true"></textarea>
+
+                    <button class="btn btn-primary" type="submit">Open email draft <span>↗</span></button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    <p class="form-note">This opens your email app with a draft. The page does not send or store your message.</p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>© <span id="year"></span> Prajwal</span>
+            <span>Learn · Build · Debug · Repeat</span>
+            <a href="#home">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
