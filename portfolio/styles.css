@@ -2,7 +2,7 @@
     color-scheme: light;
     --bg: #FFFFFF;
     --surface: #FBFDFF;
-    --surface-soft: #BFD8E3;
+    --surface-soft: #EAF4F8;
     --glass-bg: rgba(255, 255, 255, .88);
     --glass-border: rgba(0, 99, 142, .18);
     --ink: #141414;
@@ -213,7 +213,7 @@ body.menu-open .menu-toggle span:last-child { transform: translateY(-3px) rotate
 .project-visual { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-soft); }
 .project-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s var(--ease-out); }
 .project-card:hover .project-visual img { transform: scale(1.045); }
-.project-visual::after { position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(11, 17, 32, .4)); content: ""; pointer-events: none; }
+.project-visual::after { position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, .4)); content: ""; pointer-events: none; }
 .project-body { min-height: 260px; display: flex; flex-direction: column; align-items: flex-start; padding: 21px; }
 .project-body p { margin: 0 0 12px; color: var(--accent); font: 700 var(--text-xs) var(--font-display); letter-spacing: .02em; }
 .project-body h3 { margin: 0 0 10px; color: var(--ink); font: 700 var(--text-lg) var(--font-display); }
