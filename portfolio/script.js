@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const setTheme = (dark) => {
         root.classList.toggle('dark', dark);
-        if (themeMeta) themeMeta.content = dark ? '#0B1120' : '#F8FAFC';
+        if (themeMeta) themeMeta.content = dark ? '#000000' : '#FFFFFF';
         themeButton?.setAttribute('aria-pressed', String(dark));
         themeButton?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
         if (themeLabel) themeLabel.textContent = dark ? 'Light' : 'Dark';
@@ -54,13 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const distance = Math.hypot(dx, dy);
                     if (distance < 130) {
                         const alpha = (1 - distance / 130) * .18;
-                        context.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+                        context.strokeStyle = `rgba(140, 185, 204, ${alpha})`;
                         context.beginPath(); context.moveTo(points[i].x, points[i].y); context.lineTo(points[j].x, points[j].y); context.stroke();
                     }
                 }
             }
             points.forEach(point => {
-                context.fillStyle = 'rgba(34, 211, 238, .62)';
+                context.fillStyle = 'rgba(140, 185, 204, .62)';
                 context.beginPath(); context.arc(point.x, point.y, point.size, 0, Math.PI * 2); context.fill();
             });
             frame = requestAnimationFrame(draw);
