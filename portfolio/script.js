@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     const setTheme = (dark) => {
         root.classList.toggle('dark', dark);
-        if (themeMeta) themeMeta.content = dark ? '#000000' : '#FFFFFF';
+        if (themeMeta) themeMeta.content = dark ? '#222222' : '#FFFFFF';
         themeButton?.setAttribute('aria-pressed', String(dark));
         themeButton?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
         if (themeLabel) themeLabel.textContent = dark ? 'Light' : 'Dark';
