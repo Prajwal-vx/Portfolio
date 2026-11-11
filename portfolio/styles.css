@@ -12,7 +12,6 @@
     --brand-hover: #004A6B;
     --accent: #00638E;
     --accent-soft: #BFD8E3;
-    --success: #146B45;
     --danger: #B42318;
     --content: 1160px;
     --gutter: clamp(20px, 5vw, 72px);
@@ -39,7 +38,6 @@
     --brand-hover: #0877A5;
     --accent: #BFD8E3;
     --accent-soft: #8CB9CC;
-    --success: #78D6A7;
     --danger: #FF9B91;
 }
 
@@ -187,7 +185,6 @@ body.menu-open .menu-toggle span:last-child { transform: translateY(-3px) rotate
 .field-error { color: var(--danger); font-size: .8rem; }
 .contact-form .btn, .form-status, .form-note { grid-column: 1 / -1; }
 .contact-form .btn { justify-self: start; min-width: 175px; }
-.btn:disabled, .filter:disabled, .workflow-step:disabled { border-color: var(--line); background: var(--surface-strong); color: var(--muted); cursor: not-allowed; }
 .form-status { min-height: 1.3em; margin: -4px 0 0; color: var(--muted); font-size: .85rem; font-weight: 650; }
 .form-status[data-state="error"] { color: var(--danger); }
 .form-status[data-state="info"] { color: var(--muted); }
